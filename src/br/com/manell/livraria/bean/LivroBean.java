@@ -2,6 +2,8 @@ package br.com.manell.livraria.bean;
 
 import javax.faces.bean.ManagedBean;
 
+import br.com.manell.livraria.modelo.Livro;
+
 @ManagedBean
 public class LivroBean {
 
