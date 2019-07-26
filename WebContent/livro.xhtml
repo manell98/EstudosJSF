@@ -21,7 +21,9 @@
 				<h:inputText id="isbn" value="#{livroBean.livro.isbn}" validator="#{livroBean.comecaComDigitoUm}" />
 
 				<h:outputLabel value="Preço" for="preco" />
-				<h:inputText id="preco" value="#{livroBean.livro.preco}" />
+				<h:inputText id="preco" value="#{livroBean.livro.preco}" label="Preço">
+				  <f:validateDoubleRange minimum="1.0" maximum="1000.00"/>
+				</h:inputText>
 
 				<h:outputLabel value="Data de Lançamento" for="dataLancamento" />
 				<h:inputText id="dataLancamento" value="#{livroBean.livro.dataLancamento.time}">
@@ -62,8 +64,7 @@
 		<h:column>
 			<f:facet name="header">Preço</f:facet>
 			<h:outputText value="#{livro.preco}">
-				<f:convertNumber type="currency" pattern="R$ #0.00"
-					currencySymbol="R$" locale="pt_BR" />
+				<f:convertNumber type="currency" pattern="R$ #0.00" currencySymbol="R$" locale="pt_BR" />
 			</h:outputText>
 		</h:column>
 		<h:column>
