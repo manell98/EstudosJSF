@@ -13,6 +13,20 @@ import br.com.manell.livraria.modelo.Autor;
 public class AutorBean {
 
 	private Autor autor = new Autor();
+	
+	private Integer autorId;
+
+	public Integer getAutorId() {
+		return autorId;
+	}
+
+	public void setAutorId(Integer autorId) {
+		this.autorId = autorId;
+	}
+	
+	public void carregarAutorPeloId() {
+		this.autor = new DAO<Autor>(Autor.class).buscaPorId(autorId);
+	}
 
 	public Autor getAutor() {
 		return autor;
