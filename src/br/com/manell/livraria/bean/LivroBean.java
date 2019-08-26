@@ -54,6 +54,11 @@ public class LivroBean implements Serializable {
 		new DAO<Livro>(Livro.class).adiciona(this.livro);
 	}
 	
+	public void remover(Livro livro) {
+		System.out.println("Removendo livro");
+		new DAO<Livro>(Livro.class).remove(livro);
+	}
+	
 	public void gravarAutor() {
 		Autor autor = new DAO<Autor>(Autor.class).buscaPorId(this.autorId);
 		this.livro.adicionaAutor(autor);
