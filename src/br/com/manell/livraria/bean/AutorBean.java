@@ -13,7 +13,6 @@ import br.com.manell.livraria.modelo.Autor;
 public class AutorBean {
 
 	private Autor autor = new Autor();
-	
 	private Integer autorId;
 
 	public Integer getAutorId() {

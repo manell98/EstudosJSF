@@ -21,6 +21,19 @@ public class LivroBean implements Serializable {
 
 	private Livro livro = new Livro();
 	private Integer autorId;
+	private Integer livroId;
+
+	public Integer getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
+	}
+	
+	public void carregarLivroPeloId() {
+		this.livro = new DAO<Livro>(Livro.class).buscaPorId(livroId);
+	}
 
 	public Livro getLivro() {
 		return livro;
