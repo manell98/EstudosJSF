@@ -30,8 +30,15 @@ public class LoginBean {
 			return "livro?faces-redirect=true";			
 		}
 		
-		return null;
+		return null;	
+	}
+	
+	public String deslogar() {
 		
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().remove("usuarioLogado");
+		
+		return "login?faces-redirect=true";
 	}
 
 }
