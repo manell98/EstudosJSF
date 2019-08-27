@@ -9,7 +9,7 @@
 <ui:composition template="_template.xhtml">
 
 	<ui:define name="titulo">
-		Login
+		<p:outputPanel>Login</p:outputPanel> 
 	</ui:define>
 
 	<ui:define name="conteudo">
@@ -31,7 +31,7 @@
 					
 					<p:message for="senha" id="messageSenha" />
 					
-					<p:commandButton value="Efetue Login" action="#{loginBean.efetuarLogin}" update="@form" process="@form" />
+					<p:commandButton value="Efetue Login" action="#{loginBean.efetuarLogin}" process="@form" update="@form" />
 				</h:panelGrid>
 			</p:fieldset>
 		</h:form>
