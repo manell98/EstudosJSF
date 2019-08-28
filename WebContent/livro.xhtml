@@ -77,7 +77,7 @@
 		</h:form>
 	
 		<h:form id="formTabelaLivros">
-			<p:dataTable value="#{livroBean.livros}" var="livro" id="tabelaLivros" rows="5" paginator="true">
+			<p:dataTable value="#{livroBean.livros}" var="livro" id="tabelaLivros" rows="6" paginator="true">
 				<f:facet name="header">Livros</f:facet>
 				
 				<p:column headerText="Título" sortBy="#{livro.titulo}" filterBy="#{livro.titulo}" filterMatchMode="startsWith">
@@ -111,10 +111,6 @@
 				
 			</p:dataTable>
 		</h:form>
-	</ui:define>
-	
-	<ui:define name="titulo-rodape">
-	  View Livros
 	</ui:define>
 	
 </ui:composition>
