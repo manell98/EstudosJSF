@@ -23,6 +23,8 @@ public class LivroBean implements Serializable {
 	private Integer autorId;
 	private Integer livroId;
 
+	private List<Livro> livros;
+
 	public Integer getLivroId() {
 		return livroId;
 	}
@@ -40,7 +42,13 @@ public class LivroBean implements Serializable {
 	}
 	
 	public List<Livro> getLivros() {
-		return new DAO<Livro>(Livro.class).listaTodos();
+		
+		DAO<Livro> dao = new DAO<Livro>(Livro.class);
+		
+		if(this.livros == null) {
+			this.livros = dao.listaTodos();
+		}	
+		return livros;
 	}
 	
 	public Integer getAutorId() {
@@ -59,19 +67,19 @@ public class LivroBean implements Serializable {
 		System.out.println("Gravando livro " + this.livro.getTitulo());
 
 		if (livro.getAutores().isEmpty()) {
-//			throw new RuntimeException("Livro deve ter pelo menos um Autor.");
 			FacesContext.getCurrentInstance().addMessage("autor", new FacesMessage("Livro deve ter pelo menos um Autor"));
 			return;
 		}
 
+		DAO<Livro> dao = new DAO<Livro>(Livro.class);
 		if(this.livro.getId() == null) {
-			new DAO<Livro>(Livro.class).adiciona(this.livro);
+			dao.adiciona(this.livro);
+			this.livros = dao.listaTodos();
 		} else {
-			new DAO<Livro>(Livro.class).atualiza(this.livro);
+			dao.atualiza(this.livro);
 		}
 		
-		this.livro = new Livro();
-		
+		this.livro = new Livro();	
 	}
 	
 	public void remover(Livro livro) {
