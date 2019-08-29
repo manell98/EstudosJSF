@@ -1,11 +1,12 @@
 package br.com.manell.livraria.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -14,17 +15,21 @@ import br.com.manell.livraria.dao.DAO;
 import br.com.manell.livraria.modelo.Livro;
 import br.com.manell.livraria.modelo.Venda;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class VendasBean {
-	
+public class VendasBean implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public BarChartModel getVendasModel() {
 		
         BarChartModel model = new BarChartModel();
+        model.setTitle("Vendas - 2018-2019");
+        model.setShowPointLabels(true);
+        model.setLegendPosition("ne");
         model.setAnimate(true);
  
         ChartSeries vendaSerie = new ChartSeries();
-        vendaSerie.setLabel("Vendas - 2018");
+        vendaSerie.setLabel("2018");
         
         List<Venda> vendas = getVendas(1234);
         
@@ -33,7 +38,7 @@ public class VendasBean {
 		}
         
         ChartSeries vendaSerie2019 = new ChartSeries();
-        vendaSerie2019.setLabel("Vendas - 2019");
+        vendaSerie2019.setLabel("2019");
         
         vendas = getVendas(4321);
         
