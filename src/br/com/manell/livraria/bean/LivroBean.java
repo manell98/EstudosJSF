@@ -15,6 +15,7 @@ import br.com.manell.livraria.dao.AutorDao;
 import br.com.manell.livraria.dao.LivroDao;
 import br.com.manell.livraria.modelo.Autor;
 import br.com.manell.livraria.modelo.Livro;
+import br.com.manell.livraria.transaction.Transacional;
 
 @Named
 @ViewScoped
@@ -69,6 +70,7 @@ public class LivroBean implements Serializable {
 		return this.autorDao.listaTodos();
 	}
 
+	@Transacional
 	public void gravar() {
 		System.out.println("Gravando livro " + this.livro.getTitulo());
 
@@ -87,6 +89,7 @@ public class LivroBean implements Serializable {
 		this.livro = new Livro();	
 	}
 	
+	@Transacional
 	public void remover(Livro livro) {
 		System.out.println("Removendo livro");
 		this.livroDao.remove(livro);

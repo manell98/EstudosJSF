@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.com.manell.livraria.dao.AutorDao;
 import br.com.manell.livraria.modelo.Autor;
+import br.com.manell.livraria.transaction.Transacional;
 
 @Named
 @ViewScoped // javax.faces.view.ViewScoped
@@ -41,6 +42,7 @@ public class AutorBean implements Serializable {
 		return this.autorDao.listaTodos();
 	}
 
+	@Transacional
 	public String gravar() {
 		System.out.println("Gravando autor " + this.autor.getNome());
 
@@ -55,6 +57,7 @@ public class AutorBean implements Serializable {
 		return "livro?faces-redirect=true ";
 	}
 	
+	@Transacional
 	public void remover(Autor autor) {
 		this.autorDao.remove(autor);
 	}
