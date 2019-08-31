@@ -87,6 +87,7 @@ public class LivroBean implements Serializable {
 			this.livros = livroDao.listaTodos();
 		} else {
 			livroDao.atualiza(this.livro);
+			this.livros = livroDao.listaTodos();
 		}
 		
 		this.livro = new Livro();	
@@ -96,6 +97,7 @@ public class LivroBean implements Serializable {
 	public void remover(Livro livro) {
 		System.out.println("Removendo livro");
 		this.livroDao.remove(livro);
+		this.livros = livroDao.listaTodos();
 	}
 	
 	public void removerAutorDoLivro(Autor autor) {
@@ -104,8 +106,8 @@ public class LivroBean implements Serializable {
 	}
 	
 	public void carregar(Livro livro) {
-		System.out.println("Carregando livro");
-		this.livro = livro;
+		System.out.println("Carregando livro: " + livro.getTitulo());
+		this.livro = this.livroDao.buscaPorId(livro.getId());
 	}
 	
 	public void gravarAutor() {
