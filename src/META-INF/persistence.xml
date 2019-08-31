@@ -11,6 +11,7 @@
 		<class>br.com.manell.livraria.modelo.Livro</class>
 		<class>br.com.manell.livraria.modelo.Autor</class>
 		<class>br.com.manell.livraria.modelo.Usuario</class>
+		<class>br.com.manell.livraria.modelo.Venda</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
